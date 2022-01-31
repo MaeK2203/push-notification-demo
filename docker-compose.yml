@@ -32,8 +32,6 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./docker/mysql/sql:/docker-entrypoint-initdb.d
-      - ./docker/mysql/data:/var/lib/mysql
       - ./docker/mysql/my.conf:/etc/mysql/conf.d/my.conf
     environment:
       MYSQL_DATABASE: push_notification
