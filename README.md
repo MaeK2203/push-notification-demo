@@ -10,11 +10,20 @@ mv localhost+2.pem docker/nginx/ssl/cert.pem
 mv localhost+2-key.pem docker/nginx/ssl/cert-key.pem
 ```
 
+## create env file
+```bash
+cp -p src/.env.example src/.env
+```
+
 ## Build Docker container
 ```bash
 docker-compose up -d --build
-docker-compose exec node npm i
-docker-compose exec node npm run dev
+docker-compose exec php php composer install
+```
+
+## Create env key
+```bash
+docker-compose exec php php artisan key:generate
 ```
 
 ## DB migration
@@ -22,7 +31,13 @@ docker-compose exec node npm run dev
 docker-compose exec php artisan migrate
 ```
 
-## Create id
+## Front build
 ```bash
-php artisan webpush:vapid
+docker-compose exec php npm ci
+docker-compose exec php npm run dev
+```
+
+## Create vapid
+```bash
+docker-compose exec php php artisan webpush:vapid
 ```
