@@ -1,5 +1,5 @@
 # push-notification-demo
-push notification implementation by laravel.
+push notification implementation with laravel.
 
 # build
 
@@ -18,7 +18,7 @@ cp -p src/.env.example src/.env
 ## Build Docker container
 ```bash
 docker-compose up -d --build
-docker-compose exec php php composer install
+docker-compose exec php composer install
 ```
 
 ## Create env key
@@ -28,7 +28,7 @@ docker-compose exec php php artisan key:generate
 
 ## DB migration
 ```bash
-docker-compose exec php artisan migrate
+docker-compose exec php php artisan migrate
 ```
 
 ## Front build
